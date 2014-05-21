@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    setInterval(function() {
+    var updateClock = function() {
         var pad = function(i) {
             return (i < 10 ? "0" : "") + i;
         }
@@ -9,5 +9,14 @@ $(document).ready(function() {
         var minutes = date.getMinutes();
         var hours = date.getHours();
         $("#clock").html(pad(hours) + ":" + pad(minutes) + ":" + pad(seconds));
-    }, 1000);
+    }
+
+    $("#addRowButton").click(function(e) {
+        var newRow = $("<tr><td>NEW</td></tr>");
+        newRow.appendTo($("#eventTable"));
+    });
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
 });

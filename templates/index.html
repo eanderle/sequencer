@@ -8,8 +8,10 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Hello, Bootstrap</h1>
-  <div id="clock"></div>
+  <div class="jumbotron"><h1 id="clock"></h1></div>
+  <table class="table" id="eventTable">
+  </table>
+  <button id="addRowButton" class="btn btn-success">New Event</button>
 {% endblock %}
 
 {% block scripts %}
