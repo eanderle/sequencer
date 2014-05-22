@@ -3,9 +3,7 @@ $(document).ready(function() {
     var addRowButton = $("#addRowButton");
     var eventTable = $("#eventTable");
 
-    var recordButtonHtml = '<button class="btn btn-danger">Record</button>'
-
-    var updateClock = function() {
+    var getTime = function() {
         var pad = function(i) {
             return (i < 10 ? "0" : "") + i;
         }
@@ -14,23 +12,29 @@ $(document).ready(function() {
         var seconds = date.getSeconds();
         var minutes = date.getMinutes();
         var hours = date.getHours();
-        clock.html(pad(hours) + ":" + pad(minutes) + ":" + pad(seconds));
+
+        return pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+    }
+
+    var updateClock = function() {
+        clock.html(getTime());
     }
 
     addRowButton.click(function(e) {
-        var newButton = $(recordButtonHtml);
-        var newLabel = $('<label>NEW</label>');
-        var newRow = $('<tr/>');
+        var row = $('<tr/>');
+        var input = $('<input placeholder="New Event"></input>');
+        var label = $('<label>N/A</label>');
+        var button = $('<button class="btn btn-danger">Record</button>');
 
-        [newLabel, newButton].forEach(function(elt, idx, arr) {
+        [input, label, button].forEach(function(elt, idx, arr) {
             var col = $('<td/>');
             elt.appendTo(col);
-            col.appendTo(newRow);
+            col.appendTo(row);
         });
-        newRow.appendTo(eventTable);
+        row.appendTo(eventTable);
 
-        newButton.click(function(e) {
-            newLabel.html("RECORDED");
+        button.click(function(e) {
+            label.html(getTime());
         });
     });
 

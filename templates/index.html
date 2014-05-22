@@ -8,10 +8,27 @@
 {% endblock %}
 
 {% block content %}
-  <div class="jumbotron"><h1 id="clock"></h1></div>
-  <table class="table" id="eventTable">
-  </table>
-  <button id="addRowButton" class="btn btn-success">New Event</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="jumbotron"><h1 id="clock"></h1></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-condensed table-bordered" id="eventTable">
+          <th>Event Name</th>
+          <th>Time Recorded</th>
+          <th></th>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button id="addRowButton" class="btn btn-success">New Event</button>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block scripts %}
