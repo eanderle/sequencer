@@ -20,7 +20,7 @@ $(document).ready(function() {
         clock.html(getTime());
     }
 
-    addRowButton.click(function(e) {
+    var createNewEvent = function() {
         var row = $('<tr/>');
         var input = $('<input placeholder="New Event"></input>');
         var label = $('<label>N/A</label>');
@@ -36,9 +36,14 @@ $(document).ready(function() {
         button.click(function(e) {
             label.html(getTime());
         });
+    }
+
+    addRowButton.click(function(e) {
+        createNewEvent();
     });
 
     updateClock();
+    createNewEvent();
 
     setInterval(updateClock, 1000);
 });
